@@ -27,7 +27,7 @@ type User struct {
 
 // 查询列表是， 查询结果集为empty返回空的slice
 func FindUsers(args ...string) ([]*User, error){
-  var users []*User
+  users := make([]*User,0, 15)
   err := db.find(args, &users).Error
   if (err != nil) {
     if (erros.is(err, sql.ErrNoRows)) {
